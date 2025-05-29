@@ -13,14 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hello{
-  color: #66f262;
-  background-color: #ddda46;
-  padding: 10px;
-  border-radius: 2%;
-  margin-left: 400px;
-}
-
 a {
   font-weight: 500;
   color: #646cff;
