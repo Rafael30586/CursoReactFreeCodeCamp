@@ -3,14 +3,18 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+const root = createRoot(document.getElementById('root'));
 
+root.render(
+  //TemporaryName(), así funciona pero no es la mejor manera de expresarlo cuando trabajamos con React
+  //<TemporaryName/>
+  <Page/>
+  //<Page></Page> Así también funciona
+)
 
-createRoot(document.getElementById('root')).render(
-  /*
-  <StrictMode>
-    <App />
-  </StrictMode>*/
-  <main>
+function TemporaryName(){
+  return (
+    <main>
     <img width="40px" src="/src/assets/react-logo.png" alt="Logo de React" />
     <h1>Fun facts about React</h1>
     <ul>
@@ -20,8 +24,23 @@ createRoot(document.getElementById('root')).render(
       <li>Is maintained by Meta</li>
       <li>Powers thousands of enterprise apps, including mobile apps</li>
     </ul>
-  </main>,
-)
+  </main>
+  )
+}
+
+function Page(){
+  return (
+    <div>
+      <ul>
+        <li>Quiero trabajar como programador</li>
+        <li>Me gusta el frontend por lo menos como un hobby</li>
+        <li>La sintaxis de React es muy elegante</li>
+        <li>React hace que algunas tareas sean mucho más sencillas que trabajar solo con javascript</li>
+        
+      </ul>
+    </div>
+  )
+}
 
 /*
 Where does React put all of the elements i create in jsx when i call root.render()?
