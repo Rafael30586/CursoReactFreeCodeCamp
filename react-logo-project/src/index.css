@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color:#323232;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,10 +14,36 @@
 }
 
 
-
 img{
   margin-left: 10px;
 }
+
+.el-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 2px 3px black;
+}
+
+.react-logo{
+  width: 55px;
+}
+
+.nav-list{
+  list-style: none;
+  display: flex;
+}
+
+.list-element{
+  font-size: 1.1em;
+  margin-left: 10px;
+}
+
+.footer{
+  background-color: #1b1b1b;
+  padding: 15px;
+}
+
 
 /*
 a {

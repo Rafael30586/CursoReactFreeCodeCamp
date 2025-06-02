@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { Fragment, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -7,7 +7,7 @@ const root = createRoot(document.getElementById('root'));
 
 root.render(
   //TemporaryName(), así funciona pero no es la mejor manera de expresarlo cuando trabajamos con React
-  //<TemporaryName/>
+  //<TemporaryName/> Esta es una forma correcta de expresarlo 
   <Page/>
   //<Page></Page> Así también funciona
 )
@@ -28,17 +28,48 @@ function TemporaryName(){
   )
 }
 
-function Page(){
+function Page(){ 
   return (
-    <div>
-      <ul>
-        <li>Quiero trabajar como programador</li>
-        <li>Me gusta el frontend por lo menos como un hobby</li>
-        <li>La sintaxis de React es muy elegante</li>
-        <li>React hace que algunas tareas sean mucho más sencillas que trabajar solo con javascript</li>
-        
-      </ul>
-    </div>
+    <> 
+      <Header></Header>
+      <Main></Main>
+      <Footer></Footer>
+    </>
+  )
+}
+
+function Header(){
+  return(
+    <header className='el-header'>
+      <img className='react-logo' src="/src/assets/react-logo.png" alt="Logo de React" />
+      <nav>
+        <ul className='nav-list'>
+          <li className='list-element'>Pricing</li>
+          <li className='list-element'>About</li>
+          <li className='list-element'>Contact</li>
+        </ul>
+      </nav>
+    </header>
+  )
+}
+
+function Main(){
+  return(
+    <main className='main-component'>
+        <h1>Razones por las cuales estoy entusiasmado por aprender React</h1>
+        <ol>
+          <li>Quiero trabajar como programador</li>
+          <li>Me gusta el frontend por lo menos como un hobby</li>
+          <li>La sintaxis de React es muy elegante</li>
+          <li>React hace que algunas tareas sean mucho más sencillas que trabajar solo con javascript</li>
+        </ol>
+      </main>
+  )
+}
+
+function Footer(){
+  return(
+    <footer className='footer'>2025 Alvarez development. All rights reserved.</footer>
   )
 }
 
@@ -63,4 +94,11 @@ Que solo hay que indicarle lo que hay que hacer sin brindar detalles del como de
 What does it mean for something to be "composable"?
 Tenemos piezas pequeñas que podemos usar para crear algo más grande
 
+*/
+
+/*
+Preguntas del minuto 01:20:56
+1. Hay que responder lo que es un React component, según el youtuber es una función que retorna elementos de React.
+2. El código tiene un error porque la función empieza con minúscula. Debería empezar con mayúscula.
+3. Un custom component llamado Header está siendo renderizado llamando a la función en lugar de usar los corchetes picudos.
 */
