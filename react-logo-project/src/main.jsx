@@ -2,6 +2,10 @@ import { Fragment, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import Header from './Header.jsx'
+import MainContent from './MainContent.jsx'
+import Footer from './Footer.jsx'
+
 
 const root = createRoot(document.getElementById('root'));
 
@@ -32,46 +36,16 @@ function Page(){
   return (
     <> 
       <Header></Header>
-      <Main></Main>
+      <MainContent></MainContent>
       <Footer></Footer>
     </>
   )
 }
 
-function Header(){
-  return(
-    <header className='el-header'>
-      <img className='react-logo' src="/src/assets/react-logo.png" alt="Logo de React" />
-      <nav>
-        <ul className='nav-list'>
-          <li className='list-element'>Pricing</li>
-          <li className='list-element'>About</li>
-          <li className='list-element'>Contact</li>
-        </ul>
-      </nav>
-    </header>
-  )
-}
 
-function Main(){
-  return(
-    <main className='main-component'>
-        <h1>Razones por las cuales estoy entusiasmado por aprender React</h1>
-        <ol>
-          <li>Quiero trabajar como programador</li>
-          <li>Me gusta el frontend por lo menos como un hobby</li>
-          <li>La sintaxis de React es muy elegante</li>
-          <li>React hace que algunas tareas sean mucho más sencillas que trabajar solo con javascript</li>
-        </ol>
-      </main>
-  )
-}
 
-function Footer(){
-  return(
-    <footer className='footer'>2025 Alvarez development. All rights reserved.</footer>
-  )
-}
+
+
 
 /*
 Where does React put all of the elements i create in jsx when i call root.render()?
