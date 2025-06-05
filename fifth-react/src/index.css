@@ -14,6 +14,44 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+header{
+  background-color: #1a1a1a;
+  height: 90px;
+}
+
+nav{
+  display: flex;
+  background-color: #1a1a1a;
+  padding: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
+.react-logo{
+  width: 40px;
+  vertical-align:sub;
+}
+
+.header span{
+  color:  #77dfed ;
+  font-size: 35px;
+}
+
+main{
+  background-color:#2e2e2e;
+  color: #f9f9f9;
+  padding: 20px;
+  background-image: url("/src/assets/react-logo-black-and-white2.png");
+  background-repeat: no-repeat;
+  background-position: 470px 75px;
+}
+
+.facts-list > li::marker{
+  color: #77dfed;
+  font-size: 1.5em;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
