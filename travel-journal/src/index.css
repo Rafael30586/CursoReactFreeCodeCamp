@@ -4,8 +4,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,9 +13,42 @@
 
 header{
   background-color:#fe4c4c;
+  text-align: center;
 }
 
 header img{
   width: 40px;
   vertical-align: middle;
+}
+
+article{
+  margin-top: 20x;
+  padding: 20px;
+  display: flex;
+}
+
+.card{
+  padding: 10px;
+}
+
+.paisaje{
+  float: left;
+  width: 180px;
+  margin-top: 20x;
+  margin-right: 10px;
+  border-radius: 2%;
+}
+
+.marker{
+  width: 10px;
+}
+
+.country-name{
+  margin-left: 5px;
+}
+
+.google-maps{
+  text-decoration-line: underline;
+  color:#d4d1a4;
+  margin-left: 5px;
 }
