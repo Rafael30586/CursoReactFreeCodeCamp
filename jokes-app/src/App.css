@@ -1,0 +1,15 @@
+#root {
+  max-width: 1280px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.setup{
+  background-color: #86151f;
+  color: #c6eb0e;
+}
+
+.punchline{
+  background-color: #20f433;
+  color: #de9c9e;
+}
