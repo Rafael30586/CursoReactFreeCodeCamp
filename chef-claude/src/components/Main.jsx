@@ -9,9 +9,7 @@ export default function Main(){
     const [ingredients, setIngredients] = React.useState([<li key="Tomaotes">Tomatoes</li>])
 
 
-    function submitForm(event){
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
+    function addIngredient(formData){
         const newIngredient = formData.get("ingredient")
         setIngredients((prevIngredients)=>{
             return [...prevIngredients,<li key={newIngredient}>{newIngredient}</li>]
@@ -22,7 +20,7 @@ export default function Main(){
     
     return(
         <main>
-            <form action="" className="add-ingredient-form" onSubmit={submitForm}>
+            <form action={addIngredient} className="add-ingredient-form" >
                 <input type="text" aria-label="Add ingredient" placeholder="eg: Oregano" name="ingredient"/>
                 <button>Add ingredient</button>
             </form>
