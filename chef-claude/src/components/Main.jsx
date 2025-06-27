@@ -6,7 +6,7 @@ export default function Main(){
         return <li key={ingredient}>{ingredient}</li>
     })*/
 
-    const [ingredients, setIngredients] = React.useState([<li key="Tomaotes">Tomatoes</li>])
+    const [ingredients, setIngredients] = React.useState([])
 
 
     function addIngredient(formData){
