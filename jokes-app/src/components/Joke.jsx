@@ -15,7 +15,7 @@ export default function Joke(props){
             {isShown && <span className="punchline">{props.punchline}</span>} <br /> 
             <span>votes : {props.votes}</span> <br /> 
             <span> is pun : {props.isPun}</span> <br /> <br />
-            <button onClick={toggleShown}>{isShown ? "Hid punchline" : "Show punchline"}</button> <br />
+            <button onClick={toggleShown}>{isShown ? "Hide punchline" : "Show punchline"}</button> <br />
         </>
     )
 }

@@ -17,6 +17,22 @@ export default function Main(){
         //ingredients.push(newIngredient)
         //console.log(ingredients)
     }
+
+    function section(){
+        return (
+            <section>
+                <h2>Ingredients on hand:</h2>
+                <ul className="ingredients-list" aria-live="polite">{ingredients}</ul>
+                <div className="get-recipe-container">
+                    <div>
+                        <h3>Ready for a recipe?</h3>
+                        <p>Generate a recipe from your list of ingredients.</p>
+                    </div>
+                    <button>Get a recipe</button>
+                </div>
+            </section>
+        )
+    }
     
     return(
         <main>
@@ -24,9 +40,18 @@ export default function Main(){
                 <input type="text" aria-label="Add ingredient" placeholder="eg: Oregano" name="ingredient"/>
                 <button>Add ingredient</button>
             </form>
-            <ul>
-                {ingredients}
-            </ul>
+            {ingredients.length >= 1 && <section>
+                <h2>Ingredients on hand:</h2>
+                <ul className="ingredients-list" aria-live="polite">{ingredients}</ul>
+                {ingredients.length >= 4 && <div className="get-recipe-container">
+                    <div>
+                        <h3>Ready for a recipe?</h3>
+                        <p>Generate a recipe from your list of ingredients.</p>
+                    </div>
+                    <button>Get a recipe</button>
+                </div>}
+            </section>}
+            
         </main>
     )
 }
