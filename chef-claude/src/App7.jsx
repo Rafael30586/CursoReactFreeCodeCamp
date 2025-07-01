@@ -2,6 +2,7 @@ import React from "react"
 import avatar from "./assets/user.png"
 import starFilled from "./assets/star-filled.png"
 import starEmpty from "./assets/star-empty.png"
+import Star from "./components/Star"
 
 export default function App() {
     const [contact, setContact] = React.useState({
@@ -39,18 +40,7 @@ export default function App() {
                     alt={`Profile picture of ${contact.firstName} ${contact.lastName}`}
                 />
                 <div className="info">
-                    <button
-                        onClick={toggleFavorite}
-                        aria-pressed={contact.isFavorite}
-                        aria-label={ariaLabel}
-                        className="favorite-button"
-                    >
-                        <img
-                            src={starIcon}
-                            alt={filledStar}
-                            className="favorite"
-                        />
-                    </button>
+                    <Star isFilled={contact.isFavorite} toggleImage={toggleFavorite}></Star>
                     <h2 className="name">
                         {`${contact.firstName} ${contact.lastName}`}
                     </h2>
