@@ -1,5 +1,6 @@
 import pads from "./pads"
 import React from "react"
+import Pad from "./components/Pad"
 
 export default function App10(props) {
 
@@ -15,7 +16,7 @@ export default function App10(props) {
     }
 
     const buttons = pad.map((button)=>{ // El estilo que se le pasa al botón es como objeto
-        return <button key={button.id} style={props.darkmode ? darkColor : lightColor}>{button.id}</button>
+        return <Pad color={button.color}></Pad>
     })
     /**
      * Challenge part 1:
