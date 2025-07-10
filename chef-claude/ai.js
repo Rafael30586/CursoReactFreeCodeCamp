@@ -1,5 +1,8 @@
 // import Anthropic from "@anthropic-ai/sdk"
-import { InferenceClient } from '@huggingface/inference'
+import { HfInference, InferenceClient } from '@huggingface/inference'
+//require('dotenv').config()
+
+const apiKey = await import.meta.env.VITE_HF_ACCESS_TOKEN
 
 const SYSTEM_PROMPT = `
 You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
@@ -41,9 +44,11 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
 
 // Make sure you set an environment variable in Scrimba 
 // for HF_ACCESS_TOKEN
-const hf = new InferenceClient(process.env.REACT_APP_HF_ACCESS_TOKEN)
+const hf = new HfInference(apiKey) // Da error porque la api_key es undefined. Si coloco la api key directamente también da error (por ahora) porque dice que excedí mi crédito mensual
+const hf2 = new InferenceClient(apiKey) 
 
 export async function getRecipeFromMistral(ingredientsArr) {
+    console.log("API KEY: ",apiKey)
     const ingredientsString = ingredientsArr.join(", ")
     try {
         const response = await hf.chatCompletion({
@@ -54,8 +59,16 @@ export async function getRecipeFromMistral(ingredientsArr) {
             ],
             max_tokens: 1024,
         })
+        // console.log(hf)
         return response.choices[0].message.content
     } catch (err) {
         console.error(err.message)
     }
 }
+
+// Respuestas a preguntas de la segundo 09:34:25
+/* 1. Puede ser que la receta esté en un state
+   2. Presionar el botón get a recipe
+*/
+
+

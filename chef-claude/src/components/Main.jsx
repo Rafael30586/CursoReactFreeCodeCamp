@@ -1,6 +1,7 @@
 import React from "react"
 import ClaudeRecipe from "./ClaudeRecipe"
 import IngredientsList from "./IngredientsList"
+import { getRecipeFromMistral } from "../../ai"
 
 export default function Main(){
     /*const ingredients = ["Chicken","Oregano","Tomatoes"]
@@ -10,6 +11,7 @@ export default function Main(){
 
     const [ingredients, setIngredients] = React.useState([])
     const [recipeShown, setRecipeShown] = React.useState(false)
+    const [recipe, setRecipe] = React.useState()
 
 
     function addIngredient(formData){
@@ -23,6 +25,9 @@ export default function Main(){
 
     function showRecipe(){
         setRecipeShown(true)
+        setRecipe(prevRecipe => {
+            return getRecipeFromMistral(ingredients)
+        })
     }
 
     
@@ -33,7 +38,7 @@ export default function Main(){
                 <button>Add ingredient</button>
             </form>
             {ingredients.length >= 1 && <IngredientsList ingredients={ingredients} showRecipe={showRecipe}></IngredientsList>}
-            {recipeShown && <ClaudeRecipe></ClaudeRecipe>}
+            {recipeShown && <ClaudeRecipe recipe={recipe}></ClaudeRecipe>}
         </main>
     )
 }
