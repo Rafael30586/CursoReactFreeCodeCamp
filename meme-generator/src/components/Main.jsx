@@ -8,12 +8,12 @@ export default function Main() {
         imageUrl:"http://i.imgflip.com/1bij.jpg"
     })
 
-    function handleChange(e){ // En react, caundo pasamos un argumento a funa función de esta manera, es un evento del cual podemos tomar información
-        const {value} = e.currentTarget
+    function handleChange(e){ // En react, cuando pasamos un argumento a una función de esta manera, es un evento del cual podemos tomar información
+        const {value, name} = e.currentTarget
         setMeme(prevMeme=>{
             return{
                 ...prevMeme,
-                topText: value
+                [name]: value
             }
         })
     }
@@ -28,6 +28,7 @@ export default function Main() {
                         placeholder="One does not simply"
                         name="topText"
                         onChange={handleChange}
+                        value={meme.topText}
                     />
                 </label>
 
@@ -37,6 +38,7 @@ export default function Main() {
                         placeholder="Walk into Mordor"
                         name="bottomText"
                         onChange={handleChange}
+                        value={meme.bottomText}
                     />
                 </label>
                 <button>Get a new meme image 🖼</button>
