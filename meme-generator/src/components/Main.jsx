@@ -8,6 +8,8 @@ export default function Main() {
         imageUrl:"http://i.imgflip.com/1bij.jpg"
     })
 
+    const[memeArray,setMemeArray] = React.useState([]) 
+
     function handleChange(e){ // En react, cuando pasamos un argumento a una función de esta manera, es un evento del cual podemos tomar información
         const {value, name} = e.currentTarget
         setMeme(prevMeme=>{
@@ -17,6 +19,13 @@ export default function Main() {
             }
         })
     }
+
+    React.useEffect(()=>{
+        
+        fetch(`https://api.imgflip.com/get_memes`)
+        .then(response => response.json())
+        .then(data => setMemeArray(data.data.memes))
+    },[])
 
 
     return (
