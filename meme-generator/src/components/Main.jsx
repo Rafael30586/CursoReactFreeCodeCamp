@@ -21,11 +21,24 @@ export default function Main() {
     }
 
     React.useEffect(()=>{
-        
         fetch(`https://api.imgflip.com/get_memes`)
         .then(response => response.json())
         .then(data => setMemeArray(data.data.memes))
     },[])
+
+    function getRandomImage(){
+        let memeArraySize = memeArray.length
+        console.log("Tamaño del array:",memeArraySize);        
+        let imagePosition = Math.round((Math.random())*memeArraySize)
+        console.log("Posición de la imagen: ",imagePosition);        
+        setMeme(prevMeme=>{
+            return{
+                ...prevMeme,
+                imageUrl: memeArray[imagePosition].url
+            }
+        })
+
+    }
 
 
     return (
@@ -50,7 +63,7 @@ export default function Main() {
                         value={meme.bottomText}
                     />
                 </label>
-                <button>Get a new meme image 🖼</button>
+                <button onClick={getRandomImage}>Get a new meme image 🖼</button>
             </div>
             <div className="meme">
                 <img src={meme.imageUrl} />
