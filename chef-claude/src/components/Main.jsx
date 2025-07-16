@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import ClaudeRecipe from "./ClaudeRecipe"
 import IngredientsList from "./IngredientsList"
 import { getRecipeFromMistral } from "../../ai"
@@ -12,6 +12,9 @@ export default function Main(){
     const [ingredients, setIngredients] = React.useState([])
     const [recipeShown, setRecipeShown] = React.useState(false)
     const [recipe, setRecipe] = React.useState()
+
+    const recipeSection = useRef(null)
+    console.log(recipeSection)
 
 
     function addIngredient(formData){
@@ -30,6 +33,12 @@ export default function Main(){
         })
     }
 
+    React.useEffect(()=>{
+        if(recipe !== "" && recipeSection.current !== null){
+            recipeSection.current.scrollIntoView()
+        }
+    },[recipe])
+
     
     return(
         <main>
@@ -37,7 +46,7 @@ export default function Main(){
                 <input type="text" aria-label="Add ingredient" placeholder="eg: Oregano" name="ingredient"/>
                 <button>Add ingredient</button>
             </form>
-            {ingredients.length >= 1 && <IngredientsList ingredients={ingredients} showRecipe={showRecipe}></IngredientsList>}
+            {ingredients.length >= 1 && <IngredientsList ref={recipeSection} ingredients={ingredients} showRecipe={showRecipe}></IngredientsList>}
             {recipeShown && <ClaudeRecipe recipe={recipe}></ClaudeRecipe>}
         </main>
     )
