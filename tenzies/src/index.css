@@ -1,0 +1,19 @@
+:root{
+  background-color: black;
+}
+
+#root{
+  height: 800px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  background-color: azure;
+  border-radius: 1%;
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
