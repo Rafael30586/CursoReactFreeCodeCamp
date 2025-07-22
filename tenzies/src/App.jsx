@@ -8,7 +8,7 @@ import React from 'react'
 function App() {
 
   const [numbers,setNumbers] = React.useState(generateAllNewDice())
-  let id = 1
+  // let id = 1
   function generateAllNewDice(){
     let dice = []
     for(let i=0;i<10;i++){
@@ -17,11 +17,17 @@ function App() {
     return dice
   }
 
-  let diceArray = numbers.map((number)=>{
-    let dieId = "die".concat(id) // Generación del id para el Die component que servirá después para el grid de css
-    id++ // Aumento en el id para que genere un id distinto en el próximo Die component
+  let diceArray = numbers.map((number,index)=>{
+    let dieId = "die".concat(index) // Generación del id para el Die component que servirá después para el grid de css
     return <Die id={dieId} value={number}></Die>
   })
+
+  function rollDice(){
+    setNumbers(()=>{
+      return generateAllNewDice()
+    })
+
+  }
 
   console.log(generateAllNewDice())
 
@@ -30,6 +36,7 @@ function App() {
       <div id='dice-container'>
         {diceArray}
       </div>
+      <button id='roll-button' onClick={rollDice}>Roll</button>
     </main>
   )
 }

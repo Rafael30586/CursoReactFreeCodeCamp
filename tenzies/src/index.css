@@ -17,6 +17,8 @@ main {
   margin-left: 5%;
   margin-top: 5%;
   display: flex;
+  flex-direction: column;
+  align-content: space-around;
 }
 
 #dice-container{
@@ -99,4 +101,18 @@ main {
 #die10 {
   grid-column: 5;
   grid-row: 2;
+}
+
+#roll-button{
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  background-color: #974cd9;
+  padding: 20px;
+  border: none;
+  border-radius: 5%;
+  color: azure;
+  font-weight: 700;
+  cursor: pointer;
 }
