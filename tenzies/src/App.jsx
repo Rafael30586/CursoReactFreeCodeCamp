@@ -21,7 +21,7 @@ function App() {
 
   let diceArray = dice.map((die,index)=>{
     let dieId = "die".concat(index) // Generación del id para el Die component que servirá después para el grid de css
-    return <Die id={dieId} value={die.value} key={die.id}></Die>
+    return <Die id={dieId} value={die.value} key={die.id} class={die.isHeld ? "die held-die" : "die"}></Die>
   })
 
   function rollDice(){

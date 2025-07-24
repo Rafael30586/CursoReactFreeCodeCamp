@@ -36,7 +36,8 @@ main {
 .die {
   width: 70%;
   aspect-ratio: 1 / 1;    /* Hace que el botón sea cuadrado */
-  font-size: 16px;
+  font-size: 25px;
+  font-weight: bold;
   display: flex;          /* Centrado del contenido */
   align-items: center;
   justify-content: center;
@@ -47,6 +48,10 @@ main {
   border-radius: 5%;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+}
+
+.held-die{
+  background-color:#3EC91E;
 }
 
 .die:hover {
