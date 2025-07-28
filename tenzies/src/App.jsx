@@ -32,7 +32,25 @@ function App() {
   }
 
   function hold(id){
-    console.log(id)
+    setDice(prevDice=>{
+      let newDice = []
+      let holdDie
+      for(let singleDie of prevDice){
+        if(id===singleDie.id){
+          holdDie = {
+            ...singleDie,
+            isHeld: !singleDie.isHeld
+          }
+          newDice.push(holdDie)
+        }else{
+          holdDie = {
+            ...singleDie
+          }
+          newDice.push(holdDie)
+        }
+      }
+      return newDice
+    })
   }
 
   console.log(generateAllNewDice())

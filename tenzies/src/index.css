@@ -53,10 +53,10 @@ main {
 .held-die{
   background-color:#3EC91E;
 }
-
+/*
 .die:hover {
   background-color: #ccc;
-}
+}*/
 
 #die1 {
   grid-column: 1;
