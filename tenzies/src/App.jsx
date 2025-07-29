@@ -25,8 +25,17 @@ function App() {
   })
 
   function rollDice(){
-    setDice(()=>{
-      return generateAllNewDice()
+    setDice(prevDice=>{
+      let newDice = []
+      for(let die of prevDice){
+        if(die.isHeld===true){
+          newDice.push(die)
+        }else{
+          die.value = (Math.floor(Math.random() * 6) + 1)
+          newDice.push(die)
+        }
+      }
+      return newDice
     })
 
   }
@@ -57,6 +66,8 @@ function App() {
 
   return (
     <main>
+      <h1 className="title">Tenzies</h1>
+            <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div id='dice-container'>
         {diceArray}
       </div>
