@@ -9,15 +9,49 @@ import { nanoid } from 'nanoid'
 function App() {
 
   const [dice,setDice] = React.useState(generateAllNewDice())
-  // let id = 1
+  const [gameWon,setGameWon] = React.useState(false)
+  let heldDice = new Map();
+  
   function generateAllNewDice(){
     let diceArray = []
     for(let i=0;i<10;i++){
-      //dice.push((Math.floor(Math.random() * 6) + 1))
       diceArray.push({value:(Math.floor(Math.random() * 6) + 1) ,isHeld:false, id: nanoid()})
     }
     return diceArray
   }
+
+  React.useEffect(()=>{
+    for(let singleDie of dice){
+      if(singleDie.isHeld === true){
+        heldDice.set(singleDie.id,singleDie.value)
+      }
+    }
+
+    if(heldDice.size === 10){
+
+      setGameWon(()=>{
+        //let counter = 1
+        let sameValues = 0
+        let oldValue = 0
+        //console.log(heldDice)
+
+        heldDice.forEach((value,key)=>{
+          console.log(value)
+          if(oldValue === value){
+            sameValues += 1
+          }
+          oldValue = value
+          //counter++
+        })
+        if(sameValues === 9){
+          console.log("Game won")
+          return true
+        }else{
+          return false
+        }
+      })
+    }
+  },[dice, heldDice.size])
 
   let diceArray = dice.map((die,index)=>{
     let dieId = "die".concat(index) // Generación del id para el Die component que servirá después para el grid de css
@@ -62,7 +96,7 @@ function App() {
     })
   }
 
-  console.log(generateAllNewDice())
+  //console.log(generateAllNewDice())
 
   return (
     <main>
