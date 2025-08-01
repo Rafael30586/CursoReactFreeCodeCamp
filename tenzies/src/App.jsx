@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import Die from './components/Die'
 import React from 'react'
 import { nanoid } from 'nanoid'
+import ReactConfetti from 'react-confetti'
 
 
 function App() {
@@ -100,12 +101,13 @@ function App() {
 
   return (
     <main>
+      {gameWon && <ReactConfetti></ReactConfetti>}
       <h1 className="title">Tenzies</h1>
             <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div id='dice-container'>
         {diceArray}
       </div>
-      <button id='roll-button' onClick={rollDice}>Roll</button>
+      <button id='roll-button' onClick={rollDice}>{gameWon ? "New game" : "Roll"}</button>
     </main>
   )
 }
