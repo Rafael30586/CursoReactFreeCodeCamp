@@ -60,7 +60,8 @@ function App() {
   })
 
   function rollDice(){
-    setDice(prevDice=>{
+    if(!gameWon){
+      setDice(prevDice=>{
       let newDice = []
       for(let die of prevDice){
         if(die.isHeld===true){
@@ -72,6 +73,13 @@ function App() {
       }
       return newDice
     })
+    }else{
+      setDice(()=>{
+        setGameWon(false)
+        return generateAllNewDice();
+      })
+    }
+    
 
   }
 
