@@ -11,7 +11,8 @@ function App() {
 
   const [dice,setDice] = React.useState(generateAllNewDice())
   const [gameWon,setGameWon] = React.useState(false)
-  let heldDice = new Map();
+  const buttonRef = React.useRef(null)
+  let heldDice = new Map()
   
   function generateAllNewDice(){
     let diceArray = []
@@ -46,13 +47,23 @@ function App() {
         })
         if(sameValues === 9){
           console.log("Game won")
+          buttonRef.current.focus()
+          
           return true
         }else{
           return false
         }
       })
     }
+
   },[dice, heldDice.size])
+
+  React.useEffect(() => {
+    if (gameWon && buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, [gameWon]);
+
 
   let diceArray = dice.map((die,index)=>{
     let dieId = "die".concat(index) // Generación del id para el Die component que servirá después para el grid de css
@@ -115,7 +126,7 @@ function App() {
       <div id='dice-container'>
         {diceArray}
       </div>
-      <button id='roll-button' onClick={rollDice}>{gameWon ? "New game" : "Roll"}</button>
+      <button id='roll-button' onClick={rollDice} ref={buttonRef}>{gameWon ? "New game" : "Roll"}</button>
     </main>
   )
 }
