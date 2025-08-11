@@ -1,5 +1,6 @@
 
 import AssemblyHeader from './components/AssemblyHeader'
+import Languages from './components/Languages'
 import StatusSection from './components/StatusSection'
 
 
@@ -10,7 +11,7 @@ function App() {
       <AssemblyHeader></AssemblyHeader>
       <StatusSection></StatusSection>
       <main>
-        game goes here
+        <Languages></Languages>
       </main>
     </>
   )
