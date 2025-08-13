@@ -61,3 +61,39 @@ p{
   background-color: #545454;
   margin: 5px;
 }
+
+.keyboard{
+  display: grid;
+  grid-template-columns: repeat(10,50px);
+  grid-template-rows: repeat(3,50px);
+  justify-content: center;
+  margin-top: 50px;
+  gap: 5px;
+}
+
+.key{
+  background-color: #FFCF0D;
+  color:black;
+  text-align: center;
+  border-radius: 3px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+}
+
+#key21{
+  grid-column: 3;
+}
+
+button.new-game {
+    background-color: #11B5E5;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    width: 225px;
+    height: 40px;
+    padding: 6px 12px;
+    display: block;
+    margin-inline: auto;
+    cursor: pointer;
+    margin-top: 50px;
+}

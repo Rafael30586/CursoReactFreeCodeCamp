@@ -8,6 +8,7 @@ import React from 'react'
 function App() {
 
   const [currentWord, setCurrentWord] = React.useState("React")
+  const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
   function converToArray(){
     let wordLength = currentWord.length
@@ -23,6 +24,18 @@ function App() {
     let spanCharacters = charArray.map(char=><span className='char'>{char.toUpperCase()}</span>)
     return spanCharacters
   }
+
+  function alphabetToArray(){
+    let wordLength = alphabet.length
+    let charArray = alphabet.split("")
+    return charArray
+  }
+
+  function createKeyBoard(){
+    let charArray = alphabetToArray()
+    let keyBoard = charArray.map((char,index) => <span className='key' id={`key${(index+1)}`}>{char.toLocaleUpperCase()}</span>)
+    return keyBoard
+  }
  
   return (
     <>
@@ -31,6 +44,8 @@ function App() {
       <main>
         <Languages></Languages>
         <section id='currentWord'>{charToSpan()}</section>
+        <section className='keyboard'>{createKeyBoard()}</section>
+        <button className="new-game">New Game</button>
       </main>
     </>
   )
