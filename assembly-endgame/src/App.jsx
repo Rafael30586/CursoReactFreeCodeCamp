@@ -9,6 +9,8 @@ function App() {
 
   const [currentWord, setCurrentWord] = React.useState("React")
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
+  const [guessedLetters, setGuessedLEtters] = React.useState([])
+  console.log(guessedLetters)
 
   function converToArray(){
     let wordLength = currentWord.length
@@ -31,10 +33,20 @@ function App() {
     return charArray
   }
 
-  function createKeyBoard(){
+  function createKeyboard(){
     let charArray = alphabetToArray()
-    let keyBoard = charArray.map((char,index) => <span className='key' id={`key${(index+1)}`}>{char.toLocaleUpperCase()}</span>)
-    return keyBoard
+    let keyboard = charArray.map((char,index) => <span onClick={() => addGuessedLetter(char)} className='key' id={`key${(index+1)}`}>{char.toLocaleUpperCase()}</span>)
+    return keyboard
+  }
+
+  function addGuessedLetter(char){
+    setGuessedLEtters(prevGuessedLetters => {
+      let newGuessedLettersSet = new Set(prevGuessedLetters)
+      newGuessedLettersSet.add(char)
+      let newGuessedLetters = [...newGuessedLettersSet]
+      //console.log(newGuessedLetters)
+      return newGuessedLetters
+    })
   }
  
   return (
@@ -44,7 +56,7 @@ function App() {
       <main>
         <Languages></Languages>
         <section id='currentWord'>{charToSpan()}</section>
-        <section className='keyboard'>{createKeyBoard()}</section>
+        <section className='keyboard'>{createKeyboard()}</section>
         <button className="new-game">New Game</button>
       </main>
     </>
