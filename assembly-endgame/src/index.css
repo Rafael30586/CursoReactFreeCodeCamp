@@ -82,6 +82,14 @@ p{
   cursor: pointer;
 }
 
+.correct-key{
+  background-color: #0DBD00;
+}
+
+.wrong-key{
+  background-color: #FF534A;
+}
+
 #key21{
   grid-column: 3;
 }

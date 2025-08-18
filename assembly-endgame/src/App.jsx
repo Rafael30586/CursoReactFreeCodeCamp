@@ -3,11 +3,12 @@ import AssemblyHeader from './components/AssemblyHeader'
 import Languages from './components/Languages'
 import StatusSection from './components/StatusSection'
 import React from 'react'
+import clsx from 'clsx'
 
 
 function App() {
 
-  const [currentWord, setCurrentWord] = React.useState("React")
+  const [currentWord, setCurrentWord] = React.useState("react")
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
   const [guessedLetters, setGuessedLEtters] = React.useState([])
   console.log(guessedLetters)
@@ -33,9 +34,21 @@ function App() {
     return charArray
   }
 
-  function createKeyboard(){
+  function createKeyboard() {
     let charArray = alphabetToArray()
-    let keyboard = charArray.map((char,index) => <span onClick={() => addGuessedLetter(char)} className='key' id={`key${(index+1)}`}>{char.toLocaleUpperCase()}</span>)
+
+    let keyboard = charArray.map((char, index) => {
+      let charPresent = false
+      let charAbsent = false
+      if (guessedLetters.includes(char) && currentWord.includes(char)) {
+        charPresent = true
+      }
+      else if(guessedLetters.includes(char) && !currentWord.includes(char)){
+        charAbsent = true
+      }
+
+      return <span onClick={() => addGuessedLetter(char)} className={clsx('key',{'correct-key':charPresent,'wrong-key':charAbsent})} id={`key${(index + 1)}`}>{char.toLocaleUpperCase()}</span>
+    })
     return keyboard
   }
 
@@ -48,7 +61,9 @@ function App() {
       return newGuessedLetters
     })
   }
- 
+
+
+
   return (
     <>
       <AssemblyHeader></AssemblyHeader>
