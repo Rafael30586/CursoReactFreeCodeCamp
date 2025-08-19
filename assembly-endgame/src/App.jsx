@@ -24,12 +24,18 @@ function App() {
 
   function charToSpan(){
     let charArray = converToArray()
-    let spanCharacters = charArray.map(char=><span className='char'>{char.toUpperCase()}</span>)
+    let spanCharacters = charArray.map(char=>{
+      if(currentWord.includes(char) && guessedLetters.includes(char)){
+        return <span className='char'>{char.toUpperCase()}</span>
+      }else{
+        return <span className='char'>_</span>
+      }
+    })
     return spanCharacters
   }
 
   function alphabetToArray(){
-    let wordLength = alphabet.length
+    //let wordLength = alphabet.length
     let charArray = alphabet.split("")
     return charArray
   }
@@ -61,8 +67,6 @@ function App() {
       return newGuessedLetters
     })
   }
-
-
 
   return (
     <>
