@@ -7,11 +7,19 @@ import clsx from 'clsx'
 
 
 function App() {
-
+  // state values
   const [currentWord, setCurrentWord] = React.useState("react")
-  const alphabet = "abcdefghijklmnopqrstuvwxyz"
   const [guessedLetters, setGuessedLEtters] = React.useState([])
+
+  //derived values
+  let wrongGuessCount = 0
+
+  //static values
+  const alphabet = "abcdefghijklmnopqrstuvwxyz"
   console.log(guessedLetters)
+
+  setWrongGuessCount()
+  console.log('WrongGuessCount: ',wrongGuessCount)
 
   function converToArray(){
     let wordLength = currentWord.length
@@ -66,6 +74,15 @@ function App() {
       //console.log(newGuessedLetters)
       return newGuessedLetters
     })
+  }
+
+  function setWrongGuessCount(){
+    wrongGuessCount = 0
+    for(let letter of guessedLetters){
+      if(!currentWord.includes(letter)){
+        wrongGuessCount++
+      }
+    }
   }
 
   return (
