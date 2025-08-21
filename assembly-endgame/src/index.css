@@ -43,6 +43,29 @@ p{
 .languageBadge{
   padding: 10px;
   border-radius: 3px;
+  position:relative;
+}
+
+.lost{
+  filter: brightness(.6);
+}
+
+/* Dimmed overlay with skull on "lost" languages */
+.lost::before {
+    content: "💀";
+    position: absolute;
+    /*
+    display: flex;
+    align-items: center;
+    justify-content: center;*/
+    height: 10%;
+    width: 10%;
+    font-size: 0.85rem;
+    place-content: center;
+    top:0;
+    right: 10px;
+    filter: contrast(3);
+    /*background-color: rgba(0, 0, 0, 0.7);*/
 }
 
 #currentWord{

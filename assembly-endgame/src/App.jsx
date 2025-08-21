@@ -90,7 +90,7 @@ function App() {
       <AssemblyHeader></AssemblyHeader>
       <StatusSection></StatusSection>
       <main>
-        <Languages></Languages>
+        <Languages wrongGuessCount={wrongGuessCount}></Languages>
         <section id='currentWord'>{charToSpan()}</section>
         <section className='keyboard'>{createKeyboard()}</section>
         <button className="new-game">New Game</button>

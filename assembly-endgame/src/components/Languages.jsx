@@ -1,7 +1,11 @@
 import {languages} from '../languages'
+import clsx from 'clsx'
 
-export default function Languages(){
-    const languageBadges = languages.map(language=>{
+export default function Languages(props){
+    const languageBadges = languages.map((language,index)=>{
+            if(index<props.wrongGuessCount){
+                return <span style={{backgroundColor:language.backgroundColor,color:language.color}} className='languageBadge lost'>{language.name}</span>
+            }
             return <span style={{backgroundColor:language.backgroundColor,color:language.color}} className='languageBadge'>{language.name}</span>
         })
     return(
