@@ -4,22 +4,32 @@ import Languages from './components/Languages'
 import StatusSection from './components/StatusSection'
 import React from 'react'
 import clsx from 'clsx'
+import { languages } from './languages'
 
 
 function App() {
+  
   // state values
   const [currentWord, setCurrentWord] = React.useState("react")
   const [guessedLetters, setGuessedLEtters] = React.useState([])
 
   //derived values
   let wrongGuessCount = 0
-
+  setWrongGuessCount()
+  const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
+  const isGameLost = wrongGuessCount >= languages.length -1
+  console.log('Game lost:', isGameLost)
+  const isGameOver = isGameLost || isGameWon
+  
   //static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
   console.log(guessedLetters)
 
-  setWrongGuessCount()
+  
   console.log('WrongGuessCount: ',wrongGuessCount)
+  
+  
+  console.log('Game over:', isGameOver)
 
   function converToArray(){
     let wordLength = currentWord.length
@@ -85,6 +95,7 @@ function App() {
     }
   }
 
+
   return (
     <>
       <AssemblyHeader></AssemblyHeader>
@@ -93,7 +104,7 @@ function App() {
         <Languages wrongGuessCount={wrongGuessCount}></Languages>
         <section id='currentWord'>{charToSpan()}</section>
         <section className='keyboard'>{createKeyboard()}</section>
-        <button className="new-game">New Game</button>
+        {isGameOver && <button className="new-game">New Game</button>}
       </main>
     </>
   )
