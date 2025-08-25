@@ -99,7 +99,7 @@ function App() {
   return (
     <>
       <AssemblyHeader></AssemblyHeader>
-      <StatusSection></StatusSection>
+      <StatusSection isGameLost={isGameLost} isGameWon={isGameWon}></StatusSection>
       <main>
         <Languages wrongGuessCount={wrongGuessCount}></Languages>
         <section id='currentWord'>{charToSpan()}</section>

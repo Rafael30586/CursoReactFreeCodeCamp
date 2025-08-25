@@ -1,5 +1,5 @@
 import {languages} from '../languages'
-import clsx from 'clsx'
+
 
 export default function Languages(props){
     const languageBadges = languages.map((language,index)=>{
